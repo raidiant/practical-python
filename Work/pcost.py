@@ -2,15 +2,19 @@
 #
 # Exercise 1.27
 
-with open('Data/portfolio.csv', 'rt') as f:
-    headers = next(f)
+def portfolio_cost(filename):
+    with open(filename, 'rt') as f:
+        headers = next(f)
 
-    total = 0
-    for line in f:
-        name, shares, price = line.split(',')
-        tot_share_cost = int(shares.strip()) * float(price.strip())
-        print(name, 'total cost', tot_share_cost)
-        total = total + tot_share_cost
+        total = 0
+        for line in f:
+            name, shares, price = line.split(',')
+            try:
+                total = total + int(shares.strip()) * float(price.strip())
+            except ValueError as e:
+                print('Encountered unproccessable values!')
 
-print('Total cost', total)
+    return total
 
+cost = portfolio_cost('Data/portfolio.csv')
+print('Total cost:', cost)
