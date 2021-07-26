@@ -36,6 +36,6 @@ while principal > 0:
     principal = principal * (1+rate/12) - payment
     total_paid = total_paid + payment
 
-    print(month, total_paid, principal)
+    print(f'In month {month} total amount paid is ${total_paid}, left principal is ${principal}')
 
 print('Total paid', total_paid, 'over', month)
